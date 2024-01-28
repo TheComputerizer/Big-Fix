@@ -1,15 +1,23 @@
 package mods.thecomputerizer.bigfix.core;
 
+import mods.thecomputerizer.bigfix.core.asm.BFPatcher;
+import mods.thecomputerizer.bigfix.core.asm.ClassEditor;
 import net.minecraft.launchwrapper.IClassTransformer;
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.ClassWriter;
 
+
+import java.util.function.Function;
+
+@SuppressWarnings("unused")
 public class BFTransformer implements IClassTransformer {
 
     @Override
-    public byte[] transform(String name, String transformedName, byte[] basicClass) {
-        ClassReader reader = new ClassReader(basicClass);
-        ClassWriter writer = new ClassWriter(reader,0);
-        return new byte[0];
+    public byte[] transform(String name, String transformedName, byte[] bytes) {
+        if(transformedName.equals("net.minecraft.world.DimensionType"))
+            editClass(bytes,BFPatcher::patchDimensionType);
+        return bytes;
+    }
+
+    private byte[] editClass(byte[] bytes, Function<ClassEditor,byte[]> editor) {
+        return editor.apply(new ClassEditor(bytes));
     }
 }

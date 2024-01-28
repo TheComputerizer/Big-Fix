@@ -1,7 +1,6 @@
 package mods.thecomputerizer.bigfix.core;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
-import org.apache.logging.log4j.LogManager;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -10,12 +9,12 @@ import java.util.Map;
 public class BFPlugin implements IFMLLoadingPlugin {
 
     static {
-        LogManager.getLogger(BFPlugin.class.getName()).info("Initializing bigfix plugin");
+        BFRef.LOGGER.info("Initializing some big fixes");
     }
 
     @Override
     public String[] getASMTransformerClass() {
-        return new String[0];
+        return new String[]{"mods.thecomputerizer.bigfix.core.BFTransformer"};
     }
 
     @Override
@@ -25,7 +24,7 @@ public class BFPlugin implements IFMLLoadingPlugin {
 
     @Override
     public @Nullable String getSetupClass() {
-        return "mods.thecomputerizer.bigfix.core.BFPluginSetup";
+        return null;
     }
 
     @Override
@@ -33,6 +32,6 @@ public class BFPlugin implements IFMLLoadingPlugin {
 
     @Override
     public String getAccessTransformerClass() {
-        return "mods.thecomputerizer.bigfix.core.BFTransformer";
+        return null;
     }
 }

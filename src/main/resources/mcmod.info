@@ -1,0 +1,17 @@
+[
+  {
+    "modid": "bigfix",
+    "name": "Big Fix",
+    "description": "Fixes a bunch of vanilla/forge/mod stuff",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "modpage",
+    "authorList": [
+      "The_Computerizer"
+    ],
+    "credits": "The_Computerizer",
+    "logoFile": "modlogo.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
